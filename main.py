@@ -21,6 +21,7 @@ async def read_root(username:str, id: str):
         if i.from_user.username == username:
             result = i.text
     if 'not found' in result.lower():
+        print('dksfjdskjfckj')
         return {"result": False}
     else:
         result = result.splitlines()
@@ -30,9 +31,9 @@ async def read_root(username:str, id: str):
         if '$' in result:
             result = result.split(' ')[-1].replace(',', ' ').strip()
             if float(result) >= 25:
-                pass
+                return {"result": 'more'} 
             else:
-                pass
+                return {"result": 'less'} 
         elif '₽' in result:
             result = result.split(' ')[-1].replace(',', ' ').strip()
             if float(result) >= 2200:
