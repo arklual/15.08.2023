@@ -22,7 +22,7 @@ async def read_root(username:str, id: str):
             result = i.text
     if 'not found' in result.lower():
         print('dksfjdskjfckj')
-        return {"result": False}
+        return {"result": 'not_found'}
     else:
         result = result.splitlines()
         for i in result:
@@ -66,5 +66,5 @@ async def read_root(username:str, id: str):
                 else:
                     return {"result": 'less'} 
             except:
-                return {"result": False}
+                return {"result": 'not_found'}
 #uvicorn main:app --reload
