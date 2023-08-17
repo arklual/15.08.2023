@@ -12,7 +12,9 @@ app = FastAPI(on_startup=on_start())
 
 @app.get("/send_bot/")
 async def read_root(username:str, id: str):
-    await client.send_message(username, id)
+    if not id.isnumeric():
+        return {'result': 'error'}
+    await client.send_message(username, id.strip())
     await asyncio.sleep(3)
     result = ''
     async for i in client.get_chat_history(username, limit=2):
